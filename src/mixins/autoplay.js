@@ -33,6 +33,8 @@ const autoplay = {
         if (!this.$isServer) {
             this.$el.removeEventListener('mouseenter', this.pauseAutoplay)
             this.$el.removeEventListener('mouseleave', this.startAutoplay)
+            this.$el.removeEventListener('touchstart', this.pauseAutoplay)
+            this.$el.removeEventListener('touchend', this.startAutoplay)
         }
     },
     methods: {
@@ -53,6 +55,8 @@ const autoplay = {
         if (!this.$isServer && this.autoplayHoverPause) {
             this.$el.addEventListener('mouseenter', this.pauseAutoplay)
             this.$el.addEventListener('mouseleave', this.startAutoplay)
+            this.$el.removeEventListener('touchstart', this.pauseAutoplay)
+            this.$el.removeEventListener('touchend', this.startAutoplay)
         }
 
         this.startAutoplay()
